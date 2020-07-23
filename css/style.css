@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    font-family: 'Reem Kufi', sans-serif;
+    background-color: #f58d8d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.content_container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 50px;
+    color: #9C0000;
+    font-size: 55px;
+}
+
+.buttons {
+    border-radius: 8px;
+    display: flex;
+    margin-top: 45px;
+    margin-bottom: 60px;
+}
+
+.buttons a {
+    display: block;
+    border: 2px solid #3F0000;
+    border-radius: 8px;
+    color: #3F0000;
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.buttons a:hover {
+    border: 2px solid #fff;
+    font-size: 30px;
+    color: #ffffff;
+    transition: 0.4s;
+}
+
+.buttons a:not(:first-child) {
+    margin-left: 30px;
+}
+
+.inputs {
+    display: flex;
+}
+
+.inputs div {
+    display: flex;
+}
+
