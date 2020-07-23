@@ -34,7 +34,7 @@ h1 {
     margin-bottom: 60px;
 }
 
-.buttons a {
+.buttons div {
     display: block;
     border: 2px solid #3F0000;
     border-radius: 8px;
@@ -46,14 +46,14 @@ h1 {
     text-decoration: none;
 }
 
-.buttons a:hover {
+.buttons div:hover {
     border: 2px solid #fff;
     font-size: 30px;
     color: #ffffff;
     transition: 0.4s;
 }
 
-.buttons a:not(:first-child) {
+.buttons div:not(:first-child) {
     margin-left: 30px;
 }
 
