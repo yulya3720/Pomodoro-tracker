@@ -58,10 +58,56 @@ h1 {
 }
 
 .inputs {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 
 .inputs div {
     display: flex;
+    align-items: center;
+    margin-bottom: 40px;
 }
+
+.inputs input {
+    width: 101px;
+    height: 48px;
+    background: rgba(251, 223, 223, 0.87);
+    border-radius: 8px;
+    border: none;
+    margin-left: 11px;
+    margin-right: 11px;
+    font-size: 35px;
+    color: #A30000;
+    text-align: center;
+}
+
+.inputs input:focus {
+    outline: none;
+    transform: scale(1.1);
+}
+
+ .inputs h2{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+ }
+
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+ .tomato{
+    width: 348px;
+    position: relative;
+ }
+
+ .time{
+    position: absolute;
+    font-size: 60px;
+    color: #3F0000;
+ }
 
