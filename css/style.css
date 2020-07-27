@@ -55,6 +55,11 @@ h1 {
     transition: 0.4s;
 }
 
+.active {
+  border: 2px solid #fff;
+  color: #ffffff;
+}
+
 
 .inputs {
     width: 100%;

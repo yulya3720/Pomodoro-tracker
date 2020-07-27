@@ -8,6 +8,7 @@
     <title>Pomodoro tracker</title>
 </head>
 <body>
+    <script src="./index.js"></script>
     <div class="content_container">
         <h1>Pomodoro tracker</h1>
         <div class="buttons">
@@ -18,7 +19,7 @@
         <div class="inputs">
             <div class="work_time">
                 <h2>Work time:</h2>
-                <input type="text" value="25">
+                <input type="text" value="25" oninput="return el(this.value)">
                 <h2>min</h2>
             </div>
             <div class="break_time">
@@ -30,7 +31,7 @@
         <div class="current_state">
             <div class="timer">
               <img src="./images/pngflow.com.png" alt="">
-              <span>16:07</span>
+              <span>25:00</span>
             </div>
             <h1>Work</h1>
         </div>
