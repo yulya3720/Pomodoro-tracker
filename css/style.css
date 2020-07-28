@@ -46,7 +46,6 @@ button {
     cursor: pointer;
     text-align: center;
     justify-content: center;
-    /* padding-top: 8px; */
     font-family: 'Poppins', sans-serif;
     color: #fff;
     width: 120px;
@@ -169,7 +168,7 @@ button:focus {
     justify-content: space-evenly;
   }
 
-  .buttons div{
+  button{
     border: 1.5px solid #3F0000; 
     border-radius: 8px;
     font-size: 25px;
@@ -231,7 +230,7 @@ button:focus {
     width: 70%;
   }
 
-  .buttons div{
+  button{
     border: 1.5px solid #3F0000; 
     border-radius: 8px;
     font-size: 45px;
@@ -288,7 +287,7 @@ button:focus {
       width: 51%;
     }
 
-    .buttons div{
+    button{
       border: 1.5px solid #3F0000; 
       border-radius: 8px;
       font-size: 30px;
@@ -335,7 +334,7 @@ button:focus {
       font-size: 55px;
     }
     
-    .buttons div{
+    button{
       border-radius: 10px;
       font-size: 30px;
       padding-left: 25px;
@@ -379,7 +378,7 @@ button:focus {
       font-size: 70px;
     }
     
-    .buttons div{
+    button{
       border-radius: 12px;
       font-size: 36px;
       padding-left: 30px;
