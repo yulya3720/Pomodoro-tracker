@@ -18,7 +18,7 @@
         <div class="inputs">
             <div class="work_time">
                 <h2>Work time:</h2>
-                <input type="text" value="25">
+                <input type="text" value="25" onchange="return inputToTimer(this.value)">
                 <h2>min</h2>
             </div>
             <div class="break_time">
@@ -32,7 +32,7 @@
               <img src="./images/pngflow.com.png" alt="">
               <span>25:00</span>
             </div>
-            <h1>Work</h1>
+            <h1 class="status">Work</h1>
         </div>
     </div>
     <script src="./index.js"></script>
