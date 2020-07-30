@@ -142,6 +142,7 @@ button:focus {
     color: #fff;
     margin-top: 10%;
     font-weight: 200;
+    display: none;
  }
 
  h1, h2, span{
