@@ -1,4 +1,33 @@
+function hasNumber(myString) {
+    return /\d/.test(myString);
+  }
+  
+function inputToTimer(input_value) {
+  
+  //format and send input value to timer field
+  
+      if(hasNumber(input_value)){
+        if(input_value.replace(/[^0-9]/g, '') < 10 && input_value.replace(/[^0-9]/g, '') > 0) {
+          document.querySelector('.timer span').textContent = "0" + input_value.replace(/[^0-9]/g, '') + ":00";
+        } else if(input_value.replace(/[^0-9]/g, '') == 0) {
+          document.querySelector('.timer span').textContent = "00:00";
+        } else {
+          document.querySelector('.timer span').textContent = input_value.replace(/[^0-9]/g, '') + ":00";
+        }
+      } else {
+        document.querySelector('.timer span').textContent = "00:00";
+      }
+}
+
+
+
+
+
+
 // Tracker
+let audio = new Audio();
+audio.preload = 'auto';
+audio.src = './music/timer-bell.mp3';
 
 let status = 0; // 0 - work, 1 - rest
 const startBtn = document.querySelector('.start-btn');
@@ -36,7 +65,8 @@ function startTimer(status, button) {
             field.disabled = false;
         });
         statusElement.style.display = '';
-        timerElement.textContent = workTimeElement.value + ":00"; //!!!!!вызывать функцию для передачи значения из инпута в таймер
+        inputToTimer(workTimeElement.value);
+        //timerElement.textContent = workTimeElement.value + ":00"; 
 
     }
     
@@ -54,14 +84,15 @@ function trackTime(status) {
     if (status == 0) {
 
         countDown();
-        if (time !== "0:0") {
-            console.log('1');
+        if (time !== "00:00") {
             setTimeout(() => trackTime(status), 1000);
         }
         else {
             status = 1;
+            audio.play();
             statusElement.textContent = 'Rest';
-            timerElement.textContent = breakTimeElement.value + ':00';
+            inputToTimer(breakTimeElement.value);
+            //timerElement.textContent = breakTimeElement.value + ':00';
         }
 
     }
@@ -69,12 +100,13 @@ function trackTime(status) {
     if (status == 1) {
 
         countDown();
-        if (time !== "0:0") {
+        if (time !== "00:00") {
             console.log(time);
             setTimeout(() => trackTime(status), 1000);
         }
         else {
             status = 0;
+            audio.play();
             statusElement.textContent = 'Work';
             timerElement.textContent = workTimeElement.value + ':00';
             trackTime(status);
@@ -103,6 +135,15 @@ function countDown() {
     sec = parseInt(time.split(':')[1], 10)
     date.setMinutes(min, sec);
     date.setSeconds(date.getSeconds() - 1);
-    time = date.getMinutes() + ':' + date.getSeconds();
+    time = makeTimeFormat(date.getMinutes()) + ':' + makeTimeFormat(date.getSeconds());
     timerElement.textContent = time;
+}
+
+function makeTimeFormat(time) {
+    if (time < 10) {
+        return '0' + time; 
+    }
+    else {
+        return time;
+    }
 }
