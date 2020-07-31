@@ -1,27 +1,3 @@
-function setInputFilter(textbox, inputFilter) {
-    textbox.forEach(function(input) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-        input.addEventListener(event, function() {
-            if (inputFilter(this.value)) {
-            this.oldValue = this.value;
-            this.oldSelectionStart = this.selectionStart;
-            this.oldSelectionEnd = this.selectionEnd;
-            } else if (this.hasOwnProperty("oldValue")) {
-            this.value = this.oldValue;
-            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-            } else {
-            this.value = "";
-            }
-        });
-        });
-    });
-}
-
-setInputFilter(document.querySelectorAll("input"), function(value) {
-    return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
-});
-
-
 // Tracker
 
 let status = 0; // 0 - work, 1 - rest
@@ -29,6 +5,10 @@ const startBtn = document.querySelector('.start-btn');
 const pauseBtn = document.querySelector('.pause-btn');
 const stopBtn = document.querySelector('.stop-btn');
 let date = new Date("2017-01-26");
+let timerElement = document.querySelector('.timer span')
+let workTimeElement = document.querySelector('.work_time input')
+let breakTimeElement = document.querySelector('.break_time input')
+let statusElement = document.querySelector('.status');
 
 document.addEventListener("click", function(event) {
     if(event.target.classList.contains('btn')) {
@@ -55,8 +35,8 @@ function startTimer(status, button) {
         document.querySelectorAll('input').forEach(function(field) {
             field.disabled = false;
         });
-        document.querySelector('.status').style.display = '';
-        document.querySelector('.timer span').textContent = document.querySelector('.work_time input').value + ":00"; //!!!!!вызывать функцию для передачи значения из инпута в таймер
+        statusElement.style.display = '';
+        timerElement.textContent = workTimeElement.value + ":00"; //!!!!!вызывать функцию для передачи значения из инпута в таймер
 
     }
     
@@ -64,6 +44,7 @@ function startTimer(status, button) {
 
 
 function trackTime(status) {
+
     document.addEventListener("click", function(event) {
         if(event.target.classList.contains('stop-btn') || event.target.classList.contains('pause-btn')) {
             status = -1;
@@ -71,26 +52,33 @@ function trackTime(status) {
     });
 
     if (status == 0) {
-        document.querySelector('.status').style.display = 'inherit';
-        time = document.querySelector('.timer span').textContent
-        min = parseInt(time.split(':')[0], 10)
-        sec = parseInt(time.split(':')[1], 10)
-        date.setMinutes(min, sec);
-        date.setSeconds(date.getSeconds() - 1);
-        time = date.getMinutes() + ':' + date.getSeconds();
-        document.querySelector('.timer span').textContent = time;
 
+        countDown();
         if (time !== "0:0") {
+            console.log('1');
             setTimeout(() => trackTime(status), 1000);
         }
         else {
             status = 1;
-            trackTime(status);
+            statusElement.textContent = 'Rest';
+            timerElement.textContent = breakTimeElement.value + ':00';
         }
 
     }
+
     if (status == 1) {
-        document.querySelector('.status').textContent = 'Rest';
+
+        countDown();
+        if (time !== "0:0") {
+            console.log(time);
+            setTimeout(() => trackTime(status), 1000);
+        }
+        else {
+            status = 0;
+            statusElement.textContent = 'Work';
+            timerElement.textContent = workTimeElement.value + ':00';
+            trackTime(status);
+        }
     }
 }
 
@@ -106,4 +94,15 @@ function makeActiveBtn(button) {
         button.classList.remove('btn')
         button.classList.add('active');
     }
+}
+
+function countDown() {
+    statusElement.style.display = 'inherit';
+    time = timerElement.textContent
+    min = parseInt(time.split(':')[0], 10)
+    sec = parseInt(time.split(':')[1], 10)
+    date.setMinutes(min, sec);
+    date.setSeconds(date.getSeconds() - 1);
+    time = date.getMinutes() + ':' + date.getSeconds();
+    timerElement.textContent = time;
 }
