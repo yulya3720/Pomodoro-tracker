@@ -1,3 +1,7 @@
+function hasNumber(myString) {
+  return /\d/.test(myString);
+}
+
 function setInputFilter(textboxes, inputFilter) {
 
 //input fields validation
@@ -15,15 +19,25 @@ function setInputFilter(textboxes, inputFilter) {
         } else {
           this.value = "";
         }
-        // console.log("timer value" + this.value);
+
+        //show warning if input value is less than 1
+
+        if (this.value.replace(/[^0-9]/g, '') == 0 && this.id == 'work'){
+          document.querySelector('.work-warning p').style.display="block";
+        } else if (this.value.replace(/[^0-9]/g, '') == 0 && this.id == 'break'){
+          document.querySelector('.break-warning p').style.display="block";
+        } else {
+          document.querySelector('.work-warning p').style.display="none";
+          document.querySelector('.break-warning p').style.display="none";
+        }
       });
     });
+
   });
 }
 
 setInputFilter(document.querySelectorAll(".inputs input"), function(value) {
   return /^[0-9]{0,2}$/.test(value); // Allow digits only, using a RegExp
 });
-
 
 

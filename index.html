@@ -21,23 +21,25 @@
 
         <div class="inputsMessages_container">
             <div class="inputs">
-                <div class="work_time">
-                    <h2>Work time:</h2>
-                    <input type="text" value="25" onchange="return inputToTimer(this.value)">
-                    <h2>min</h2>
-                </div>
-                <div class="break_time">
-                    <h2>Break time:</h2>
-                    <input type="text" value="5">
-                    <h2>min</h2>
-                </div>
-            </div>
-            <div class="messages">
-                <div class="work-warning">
+                <div class="work-wrap">
+                  <div class="work_time">
+                      <h2>Work time:</h2>
+                      <input type="text" value="25" id="work" onchange="return inputToTimer(this.value, 'work')">
+                      <h2>min</h2>
+                  </div>
+                  <div class="work-warning messages">
                     <p>Work time should be at least 1 minute</p>
+                  </div>
                 </div>
-                <div class="break-warning">
+                <div class="break-wrap">
+                  <div class="break_time">
+                      <h2>Break time:</h2>
+                      <input type="text" value="5" id="break">
+                      <h2>min</h2>
+                  </div>
+                  <div class="break-warning messages">
                     <p>Break time should be at least 1 minute</p>
+                  </div>
                 </div>
             </div>
         </div>
@@ -47,7 +49,6 @@
               <img src="./images/ellipse.png" alt="timer"  >
               <span>25:00</span>
             </div>
-            <!-- <span class="status">Work</span> -->
         </div>
 
         <div class="status_container">

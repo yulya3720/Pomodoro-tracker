@@ -2,7 +2,7 @@ function hasNumber(myString) {
     return /\d/.test(myString);
   }
   
-function inputToTimer(input_value) {
+function inputToTimer(input_value, status) {
   
   //format and send input value to timer field
   
@@ -18,11 +18,14 @@ function inputToTimer(input_value) {
         document.querySelector('.timer span').textContent = "00:00";
       }
       if (input_value.replace(/[^0-9]/g, '') == 0){
+        stopBtn.disabled = true;
         startBtn.disabled = true;
+        pauseBtn.disabled = true;
       } else {
-        startBtn.disabled = false;
+        makeActiveBtn(startBtn);
       }
 }
+
 
 // Tracker
 let audio = new Audio();
