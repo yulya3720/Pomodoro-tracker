@@ -17,12 +17,12 @@ function inputToTimer(input_value) {
       } else {
         document.querySelector('.timer span').textContent = "00:00";
       }
+      if (input_value.replace(/[^0-9]/g, '') == 0){
+        startBtn.disabled = true;
+      } else {
+        startBtn.disabled = false;
+      }
 }
-
-
-
-
-
 
 // Tracker
 let audio = new Audio();
@@ -50,28 +50,31 @@ function startTimer(status, button) {
         document.querySelectorAll('input').forEach(function(field) {
             field.disabled = true;
         })
-        makeActiveBtn(startBtn);
-        makeUnactiveBtn(pauseBtn);
+        makeActiveBtn(pauseBtn);
+        makeActiveBtn(stopBtn);
+        makeUnactiveBtn(startBtn);
         trackTime(status, button);
+        activeTimerStyle();
     }
     if (button == pauseBtn) {
-        makeActiveBtn(pauseBtn);
-        makeUnactiveBtn(startBtn);
+        makeActiveBtn(startBtn);
+        makeActiveBtn(stopBtn);
+        makeUnactiveBtn(pauseBtn);
+        NonActiveTimerStyle();
     }
     if (button == stopBtn) {
-        makeUnactiveBtn(pauseBtn);
-        makeUnactiveBtn(startBtn);
+        makeUnactiveBtn(stopBtn);
+        makeActiveBtn(startBtn);
+        makeActiveBtn(pauseBtn);
+        NonActiveTimerStyle();
         document.querySelectorAll('input').forEach(function(field) {
             field.disabled = false;
         });
         statusElement.style.display = '';
         inputToTimer(workTimeElement.value);
         //timerElement.textContent = workTimeElement.value + ":00"; 
-
     }
-    
 }
-
 
 function trackTime(status) {
 
@@ -94,7 +97,6 @@ function trackTime(status) {
             inputToTimer(breakTimeElement.value);
             //timerElement.textContent = breakTimeElement.value + ':00';
         }
-
     }
 
     if (status == 1) {
@@ -115,17 +117,27 @@ function trackTime(status) {
 }
 
 function makeUnactiveBtn(button) {
-    if (button.classList.contains('active')) {
-        button.classList.remove('active');
-        button.classList.add('btn');
-    }
+    // if (button.classList.contains('active')) {
+    //     button.classList.remove('active');
+    //     button.classList.add('btn');
+    // }
+    button.disabled = true;
 }
 
 function makeActiveBtn(button) {
-    if (!(button.classList.contains('active'))) {
-        button.classList.remove('btn')
-        button.classList.add('active');
-    }
+    // if (!(button.classList.contains('active'))) {
+    //     button.classList.remove('btn')
+    //     button.classList.add('active');
+    // }
+    button.disabled = false;
+}
+
+function activeTimerStyle(){
+  document.querySelector('.timer img').className += "timer_active";
+}
+
+function NonActiveTimerStyle(){
+  document.querySelector('.timer img').classList.remove("timer_active");
 }
 
 function countDown() {
