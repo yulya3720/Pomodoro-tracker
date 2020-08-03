@@ -46,3 +46,5 @@ setInputFilter(document.querySelectorAll(".inputs input"), function(value) {
   return /^[0-9]{0,2}$/.test(value); // Allow digits only, using a RegExp
 });
 
+
+document.cookie = 'time=25; max-age=3600';
