@@ -2,23 +2,6 @@ function hasNumber(myString) {
   return /\d/.test(myString);
 }
 
-function inputToTimer(input_value) {
-
-//format and send input value to timer field
-
-    if(hasNumber(input_value)){
-      if(input_value.replace(/[^0-9]/g, '') < 10 && input_value.replace(/[^0-9]/g, '') > 0) {
-        document.querySelector('.timer span').textContent = "0" + input_value.replace(/[^0-9]/g, '') + ":00";
-      } else if(input_value.replace(/[^0-9]/g, '') == 0) {
-        document.querySelector('.timer span').textContent = "00:00";
-      } else {
-        document.querySelector('.timer span').textContent = input_value.replace(/[^0-9]/g, '') + ":00";
-      }
-    } else {
-      document.querySelector('.timer span').textContent = "00:00";
-    }
-}
-
 function setInputFilter(textboxes, inputFilter) {
 
 //input fields validation
@@ -36,9 +19,20 @@ function setInputFilter(textboxes, inputFilter) {
         } else {
           this.value = "";
         }
-        // console.log("timer value" + this.value);
+
+        //show warning if input value is less than 1
+
+        if (this.value.replace(/[^0-9]/g, '') == 0 && this.id == 'work'){
+          document.querySelector('.work-warning p').style.display="block";
+        } else if (this.value.replace(/[^0-9]/g, '') == 0 && this.id == 'break'){
+          document.querySelector('.break-warning p').style.display="block";
+        } else {
+          document.querySelector('.work-warning p').style.display="none";
+          document.querySelector('.break-warning p').style.display="none";
+        }
       });
     });
+
   });
 }
 
@@ -47,4 +41,5 @@ setInputFilter(document.querySelectorAll(".inputs input"), function(value) {
 });
 
 
-document.cookie = 'time=25; max-age=3600';
+document.cookie = 'time=25; max-age=360'
+

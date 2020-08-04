@@ -6,7 +6,7 @@
 
 body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     font-family: 'Poppins', sans-serif;
     color: #fff;
     display: flex;
@@ -22,19 +22,27 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    /* border: 1px solid red; */
 }
 
-h1 {
-  margin-top: 50px;
+.header_container {
+  height: 15vh;
+  display: flex;
+  align-items: center;
+}
+
+.header_container span {
   font-size: 50px;
-  /* font-weight: 400; */
+  font-weight: 400;
+  /* border: 1px solid red; */
 }
 
 .buttons {
-  margin-top: 30px;
+  height: 10vh;
   display: flex;
   justify-content: center;
-    /* border: 1px solid red; */
+  align-items: center;
+  /* border: 1px solid red; */
 }
 
 button {
@@ -68,6 +76,7 @@ button:hover {
   border: 1px solid rgba(81, 255, 255, 0.4);
   box-shadow: 0px 0px 10px rgba(78, 255, 244, 0.8);
   transition: 0.3s;
+  outline: none;
 }
 
 .active {
@@ -78,12 +87,40 @@ button:focus {
   outline: none;
 }
 
-.inputs {
+.inputsMessages_container {
+  height: 20vh;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
   display: flex;
   justify-content: space-between;
   margin-top: 80px;
   /* border: 1px solid red; */
+}
+
+  .work-wrap, .break-wrap{
+    display: flex;
+    flex-direction: column;
+  }
+
+.break-warning p, .work-warning p{
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: 200;
+    display: none;
+}
+
+.work-warning{
+  display: flex;
+  align-self: flex-start;
+}
+
+.break-warning{
+  display: flex;
+  align-self: flex-end;
 }
 
 .inputs div {
@@ -121,11 +158,17 @@ button:focus {
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-top: 60px;
+    /* border: 1px solid red; */
 }
 
  .timer img {
     position: relative;
+ }
+
+ .timer_active {
+  filter: drop-shadow(0px 0px 20px rgba(78, 255, 244, 0.6));
+  border: 1px solid rgba(81, 255, 255, 0.2);
+  border-radius: 100%;
  }
 
  .current_state span{
@@ -136,26 +179,42 @@ button:focus {
     font-weight: 200;
  }
 
+ .current_state {
+   height: 45vh;
+   display: flex;
+   align-items: center;
+   /* border: 1px solid red; */
+ }
+
+ .status_container {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+ }
+
  .status {
     font-size: 45px;
-    text-align: center;
     color: #fff;
-    margin-top: 10%;
     font-weight: 200;
+    /* border: 1px solid red; */
     display: none;
  }
 
- h1, h2, span{
+ h2, span {
     cursor: default;
     font-style: normal;
     font-weight: normal;
  }
 
- /* @media (min-device-width : 320px) and (orientation : portrait){
+ @media (min-device-width : 320px) and (orientation : portrait){
 
   /* smartphone portrait screen */
 
-  /* .content_container{
+  .header_container span {
+    font-size: 30px;
+  }
+
+ .content_container{
     width: 98%;
     padding-top: 2%;
     padding-bottom: 2%;
@@ -164,15 +223,14 @@ button:focus {
     font-size: 30px;
   }
   
-  .buttons{
+  .buttons {
     width: 100%;
     justify-content: space-evenly;
   }
 
-  button{
-    border: 1.5px solid #3F0000; 
+  button {
     border-radius: 8px;
-    font-size: 25px;
+    font-size: 15px;
     padding-left: 17px;
     padding-right: 17px;
     margin-left: 4px;
@@ -188,7 +246,7 @@ button:focus {
   .inputs input {
     width: 50px;
     height: 30px;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     margin-left: 8px;
     margin-right: 8px;
     font-size: 20px;
@@ -201,28 +259,41 @@ button:focus {
 }
 
   .timer img{
-    width: 230px;
-    filter: drop-shadow(10px 10px 13px rgba(108, 0, 0, 0.39));
+    width: 200px;
     margin-bottom: 10px;
 }
 
   .current_state span{
-    top: 45%;
-    font-size: 45px;
+    top: 35%;
+    font-size: 40px;
 }
 
   .current_state h1{
     font-size: 30px;
   }
-} */
+  
+  .active {
+    box-shadow: inset 2px 6px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  button:focus {
+    outline: none;
+  }
 
- /* @media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait){ */
+}
+
+ @media (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait){
 
   /* tablet portrait screen */
 
-  /* .content_container{
+  .header_container span {
+    font-size: 45px;
+  }
+
+  .content_container{
     width: 90%;
   }
+
   h1{
     font-size: 65px;
   }
@@ -232,13 +303,13 @@ button:focus {
   }
 
   button{
-    border: 1.5px solid #3F0000; 
     border-radius: 8px;
-    font-size: 45px;
+    font-size: 28px;
     padding-left: 17px;
     padding-right: 17px;
     margin-left: 4px;
     margin-right: 4px;
+    width: 200px;
   }
 
   .inputs{
@@ -249,7 +320,6 @@ button:focus {
   .inputs input {
     width: 85px;
     height: 45px;
-    border-radius: 8px;
     margin-left: 8px;
     margin-right: 8px;
     font-size: 35px;
@@ -263,24 +333,23 @@ button:focus {
 
   .timer img{
     width: 400px;
-    filter: drop-shadow(10px 10px 13px rgba(108, 0, 0, 0.39));
 }
 
   .current_state span{
-    top: 45%;
+    top: 38%;
     font-size: 65px;
 }
 
   .current_state h1{
     font-size: 65px;
   }
-} */
+}
 
- /* @media (min-width : 768px) and (max-width : 1024px) and (orientation : landscape){ */
+ @media (min-width : 768px) and (max-width : 1024px) and (orientation : landscape){
 
     /* tablet landscape screen */
 
-    /* h1{
+    h1{
       font-size: 40px;
     }
     
@@ -289,19 +358,18 @@ button:focus {
     }
 
     button{
-      border: 1.5px solid #3F0000; 
       border-radius: 8px;
       font-size: 30px;
       padding-left: 17px;
       padding-right: 17px;
       margin-left: 4px;
       margin-right: 4px;
+      font-size: 24px;
     }
 
     .inputs input {
       width: 70px;
       height: 34px;
-      border-radius: 8px;
       margin-left: 8px;
       margin-right: 8px;
       font-size: 25px;
@@ -313,11 +381,10 @@ button:focus {
 
     .timer img{
       width: 255px;
-      filter: drop-shadow(7px 7px 10px rgba(108, 0, 0, 0.39));
   }
 
     .current_state span{
-      top: 45%;
+      top: 38%;
       font-size: 40px;
   }
 
@@ -325,72 +392,198 @@ button:focus {
       font-size: 37px;
     }
 
-} */
+}
 
-/* @media (min-width : 1524px){ */
+
+@media (min-device-width : 1024px) and (max-device-width : 1524px) and (orientation : portrait){
+
+  /* portrait screen */
+
+  .header_container span {
+    font-size: 45px;
+  }
+
+  .content_container{
+    width: 90%;
+  }
+
+  h1{
+    font-size: 65px;
+  }
+  
+  .buttons{
+    width: 70%;
+  }
+
+  button{
+    border-radius: 8px;
+    font-size: 28px;
+    padding-left: 17px;
+    padding-right: 17px;
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 200px;
+  }
+
+  .inputs{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inputs input {
+    width: 85px;
+    height: 45px;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .inputs h2{
+    font-size: 28px;
+}
+
+  .timer img{
+    width: 400px;
+}
+
+  .current_state span{
+    top: 38%;
+    font-size: 65px;
+}
+
+  .current_state h1{
+    font-size: 65px;
+  }
+}
+
+@media (min-device-width : 1024px) and (max-device-width : 1524px) and (orientation : landscape) {
+
+  /* landscape screen */
+
+
+  .header_container span {
+    font-size: 45px;
+  }
+
+  .content_container{
+    width: 90%;
+  }
+
+  h1{
+    font-size: 65px;
+  }
+  
+  .buttons{
+    width: 70%;
+  }
+
+  button{
+    border-radius: 8px;
+    font-size: 24px;
+    padding-left: 17px;
+    padding-right: 17px;
+    margin-left: 4px;
+    margin-right: 4px;
+    /* width: 200px; */
+  }
+
+  .inputs{
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .inputs input {
+    width: 85px;
+    height: 45px;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 35px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .inputs h2{
+    font-size: 24px;
+}
+
+  .timer img{
+    width: 400px;
+}
+
+  .current_state span{
+    top: 38%;
+    font-size: 65px;
+}
+
+  .current_state h1{
+    font-size: 65px;
+  }
+}
+
+@media (min-width : 1524px){
 
     /* desktop screen */
 
-    /* h1{
+    h1{
       font-size: 55px;
     }
     
     button{
       border-radius: 10px;
-      font-size: 30px;
+      font-size: 24px;
       padding-left: 25px;
       padding-right: 25px;
-      
     }
 
     .inputs input {
       width: 100px;
       height: 47px;
-      border-radius: 10px;
       margin-left: 13px;
       margin-right: 13px;
-      font-size: 37px;
+      font-size: 32px;
     }
 
     .inputs h2{
-      font-size: 37px;
+      font-size: 32px;
   }
 
     .timer img{
       width: 345px;
-      filter: drop-shadow(8px 8px 12px rgba(108, 0, 0, 0.39));
   }
 
     .current_state span{
-      top: 45%;
+      top: 38%;
       font-size: 56px;
   }
+  
+  
 
     .current_state h1{
       font-size: 56px;
     }
-} */
+} 
 
-/* @media (min-width : 1824px){ */
+@media (min-width : 1824px){
 
     /* large screen */
 
-    /* h1{
+    h1{
       font-size: 70px;
     }
     
     button{
       border-radius: 12px;
-      font-size: 36px;
+      font-size: 28px;
       padding-left: 30px;
       padding-right: 30px;
-      
+      width: 160px;
     }
 
     .inputs input {
       width: 120px;
       height: 57px;
-      border-radius: 12px;
       margin-left: 16px;
       margin-right: 16px;
       font-size: 45px;
@@ -402,16 +595,16 @@ button:focus {
 
     .timer img{
       width: 414px;
-      filter: drop-shadow(10px 10px 15px rgba(108, 0, 0, 0.39));
   }
 
     .current_state span{
-      top: 45%;
+      top: 38%;
       font-size: 67px;
   }
 
     .current_state h1{
       font-size: 67px;
     }
-} */ 
+} 
+
 
